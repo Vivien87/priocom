@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Salary {
 
 
@@ -7,8 +9,11 @@ public class Salary {
 //    { "position" : 1, "sal" : 1000},
 //    { "position" : 8, "sal" : 700}
 
+    @JsonProperty
     private int position;
-    private int sal;
+    @JsonProperty
+    private int salary;
+
 
     public int getPosition() {
         return position;
@@ -18,11 +23,13 @@ public class Salary {
         this.position = position;
     }
 
-    public int getSal() {
-        return sal;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setSal(int sal) {
-        this.sal = sal;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
+
+
 }

@@ -1,11 +1,19 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 public class Employee {
-   // First Employee  "name" : "Ivanov", "position" : 1, "bonus" : 234}
 
+
+
+    // First Employee  "name" : "Ivanov", "position" : 1, "bonus" : 234}
+    @JsonProperty
     private String name;
+    @JsonProperty
     private  int position;
+    @JsonProperty
     private int bonus;
+    private int salary;
+    private int total;
 
     public Employee() {
 
@@ -33,5 +41,32 @@ public class Employee {
 
     public void setBonus(int bonus) {
         this.bonus = bonus;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getTotal() {
+        return bonus+salary;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", position=" + position +
+                ", bonus=" + bonus +
+                ", salary=" + salary +
+                ", total=" + total +
+                '}';
     }
 }

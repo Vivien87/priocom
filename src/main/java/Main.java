@@ -1,18 +1,8 @@
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Employee;
 import model.Salary;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import parser.Util;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
 
@@ -20,7 +10,8 @@ public class Main {
 //First Employee  "name" : "Ivanov", "position" : 1, "bonus" : 234}
 
 
-        ObjectMapper objectMapper = new ObjectMapper();
+  /*      ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("------------write emloyee----------------");
         Employee employee = new Employee();
         employee.setName("Ivanov");
         employee.setPosition(1);
@@ -47,24 +38,18 @@ public class Main {
 
 
         System.out.println(objectMapper.writeValueAsString(employees));
-        System.out.println("---------------------------------------");
+        System.out.println("------------------Write Salary---------------------");
 
 
-
-        System.out.println("---------------------------------------");
-
-//        "position" : 5, "sal" : 600},
-//    { "position" : 1, "sal" : 1000},
-//    { "position" : 8, "sal" : 700}
         Salary salary = new Salary();
         salary.setPosition(5);
-        salary.setSal(600);
+        salary.setSalary(600);
         Salary salary1 = new Salary();
         salary1.setPosition(1);
-        salary1.setSal(1000);
+        salary1.setSalary(1000);
         Salary salary2 = new Salary();
         salary2.setPosition(8);
-        salary2.setSal(700);
+        salary2.setSalary(700);
         List<Salary> salaries = new ArrayList<>();
         salaries.add(salary);
         salaries.add(salary1);
@@ -72,10 +57,12 @@ public class Main {
         objectMapper.writeValue(new FileOutputStream("salary.json"), salaries);
         System.out.println(objectMapper.writeValueAsString(salaries));
 
-        System.out.println("---------------------------------");
+        System.out.println("---------------------------------");*/
 
-
-
+     List<Employee> employeeList=Util.readFromFileEmployee("employee");
+     List<Salary> salaryList = Util.readFromFileSalaryByFilter("salary", 1000);
+     List<Employee> newEmployeeListWithSalary = Util.MergeByPosition(employeeList,salaryList);
+     Util.writeToFile("employeeSalary",newEmployeeListWithSalary);
 
     }
 
